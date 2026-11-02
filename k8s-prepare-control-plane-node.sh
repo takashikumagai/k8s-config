@@ -46,6 +46,7 @@ apt install -y apt-transport-https ca-certificates curl gpg containerd
 mkdir -p /etc/containerd
 containerd config default > /etc/containerd/config.toml
 sed -i 's/SystemdCgroup = false/SystemdCgroup = true/' /etc/containerd/config.toml
+sed -i 's|bin_dir = "/usr/lib/cni"|bin_dir = "/opt/cni/bin"|' /etc/containerd/config.toml
 systemctl enable containerd
 systemctl restart containerd
 
